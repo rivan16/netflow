@@ -19,10 +19,10 @@ end
 ******************************************
 
 conf t
-ip flow-export source fa 0/1/0
+ip flow-export source fa 0/7/0
 ip flow-export version 5 
 ip flow-export destination 10.M.1.10 2055
-interface fa 0/1/0
+interface fa 0/7/0
 snmp-server community public
 exit
 
