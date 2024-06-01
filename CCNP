@@ -1,0 +1,29 @@
+conf t
+no logging console
+hostname CUCM-M
+int vlan 1
+ip add 10.M.1.1 255.255.255.0
+no shut
+ip domain-name rivanit.com
+username admin privilege 15 secret pass
+ip ssh version 2
+crypto key generate rsa
+
+----> 2048
+
+line vty 0 14
+login local
+transport input telnet ssh
+end
+
+******************************************
+
+conf t
+ip flow-export source fa 0/1/0
+ip flow-export version 5 
+ip flow-export destination 10.M.1.10 2055
+interface fa 0/1/0
+snmp-server community public
+exit
+
+******************************************
